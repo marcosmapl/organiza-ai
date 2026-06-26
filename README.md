@@ -10,9 +10,15 @@ Plataforma de organização e gestão financeira pessoal.
 ## Backend
 
 1. `cd backend`
-2. Copie `.env.example` para `.env` se necessário.
-3. Execute `npm run prisma:migrate`
-4. Execute `npm run dev`
+2. Execute `npm install`
+3. Copie `.env.example` para `.env` se necessario.
+4. Execute `npm run prisma:migrate`
+5. Execute `npm run dev`
+
+### Seed local
+
+- Execute `npm run seed` para criar ou atualizar um usuario local de teste.
+- Credenciais: `testuser` / `Test1234!`
 
 ## Frontend
 
