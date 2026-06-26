@@ -1,0 +1,169 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, sans-serif;
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.layout header {
+  align-items: center;
+  background: #0f172a;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.layout nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.layout nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.layout nav a.active {
+  color: #fff;
+  font-weight: 700;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1rem;
+}
+
+.panel,
+.auth,
+.dashboard {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+input,
+select,
+button {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+}
+
+button {
+  background: #1d4ed8;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1e40af;
+}
+
+.actions {
+  align-items: end;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.feedback {
+  margin-top: 0.75rem;
+}
+
+.feedback.error {
+  color: #b91c1c;
+}
+
+.feedback.success {
+  color: #166534;
+}
+
+.table-wrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.cards {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin: 1rem 0;
+}
+
+.cards article {
+  background: #f1f5f9;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.dashboard ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.auth {
+  margin: 4rem auto;
+  max-width: 420px;
+}
+
+.auth form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .layout header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
