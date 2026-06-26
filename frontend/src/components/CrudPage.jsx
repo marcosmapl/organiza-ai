@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import client from '../api/client'
 
 const defaultByType = (type) => (type === 'checkbox' ? false : '')
@@ -27,14 +27,14 @@ const CrudPage = ({ title, endpoint, fields, columns }) => {
     setForm(Object.fromEntries(fields.map((field) => [field.name, defaultByType(field.type)])))
   }
 
-  const load = async () => {
+  const load = useCallback(async () => {
     const { data } = await client.get(endpoint)
     setItems(data)
-  }
+  }, [endpoint])
 
   useEffect(() => {
     load()
-  }, [endpoint])
+  }, [load])
 
   const optionsCache = useMemo(() => Object.fromEntries(fields.map((field) => [field.name, field.options || []])), [fields])
 

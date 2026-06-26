@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import client from '../api/client'
 import { money } from '../utils/formatters'
 
@@ -16,14 +16,14 @@ const DashboardPage = () => {
   const [range, setRange] = useState(monthRange)
   const [summary, setSummary] = useState({ expectedIncome: 0, expectedExpenses: 0, completedTransfers: [], accounts: [] })
 
-  const loadSummary = async () => {
+  const loadSummary = useCallback(async () => {
     const { data } = await client.get('/dashboard/summary', { params: range })
     setSummary(data)
-  }
+  }, [range])
 
   useEffect(() => {
     loadSummary()
-  }, [range.startDate, range.endDate])
+  }, [loadSummary])
 
   const net = useMemo(() => Number(summary.expectedIncome) - Number(summary.expectedExpenses), [summary])
 

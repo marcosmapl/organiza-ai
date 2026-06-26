@@ -1,4 +1,5 @@
 const express = require('express')
+const { rateLimit } = require('express-rate-limit')
 const prisma = require('../lib/prisma')
 const BaseRepository = require('../repositories/baseRepository')
 const UserRepository = require('../repositories/userRepository')
@@ -57,9 +58,15 @@ const buildRouter = () => {
 
   const authService = new AuthService(userRepository, userStatusRepository)
   const authController = new AuthController(authService)
+  const authRateLimit = rateLimit({
+    windowMs: 60 * 1000,
+    limit: 10,
+    standardHeaders: true,
+    legacyHeaders: false
+  })
 
-  router.post('/auth/register', validate(registerSchema), asyncHandler(authController.register))
-  router.post('/auth/login', validate(loginSchema), asyncHandler(authController.login))
+  router.post('/auth/register', authRateLimit, validate(registerSchema), asyncHandler(authController.register))
+  router.post('/auth/login', authRateLimit, validate(loginSchema), asyncHandler(authController.login))
 
   router.use(auth)
 

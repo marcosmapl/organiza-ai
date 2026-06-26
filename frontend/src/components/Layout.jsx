@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { useAuth } from '../state/AuthContext'
+import { useAuth } from '../state/useAuth'
 
 const links = [
   { to: '/', label: 'Dashboard' },
